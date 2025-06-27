@@ -2,10 +2,6 @@ import base64
 import tkinter as tk
 from PIL import Image, ImageTk
 import io
-
-###########################
-# Configurable parameters #
-###########################
 border_thickness = 8
 
 COLORS = [
@@ -16,7 +12,6 @@ COLORS = [
     '#8000FF', # Purple
 ]
 
-# === The base64 GIF ===
 b64data = """
 R0lGODlhIgEcAfcfMQAAAAMAAAYAAAcFAwgAAAsAAAwAAA4AAA4LCQ8HARADABEAABYAABgBABoT
 DhwLAB4BACARAyAaFSkCACkaDSoNASsWASwmIC4qJy8kGTMjEjQFADQPADQYATUiCTgsITgyLD0D
@@ -5917,34 +5912,24 @@ try:
         gif.seek(len(frames))
 except EOFError:
     pass
-
 frame_count = len(frames)
 frame_index = 0
-
-###########################
-# Window setup            #
-###########################
 x, y = 100, 100
 dx, dy = 5, 5
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 root.configure(bg="pink")
-
 canvas = tk.Canvas(root, width=window_width, height=window_height, highlightthickness=0, bg="pink")
 canvas.pack()
-
 border_color_index = [0]
-
 def draw_frame():
     canvas.delete("all")   
     color = COLORS[border_color_index[0]]
-    # Draw a filled border rectangle first:
     canvas.create_rectangle(
         0, 0, window_width, window_height,
         outline='', fill=color
     )
-    # Draw the image on top, perfectly placed:
     canvas.create_image(
         border_thickness, border_thickness,
         image=frames[frame_index], anchor="nw"
