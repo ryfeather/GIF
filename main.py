@@ -5,11 +5,11 @@ import io
 border_thickness = 8
 
 COLORS = [
-    '#FF0000', # Red
-    '#00FF00', # Green
-    '#0080FF', # Blue
-    '#FF00FF', # Pink
-    '#8000FF', # Purple
+    '#FF0000',
+    '#00FF00',
+    '#0080FF',
+    '#FF00FF',
+    '#8000FF',
 ]
 
 b64data = """
@@ -5959,8 +5959,8 @@ def on_click(event):
         root.destroy()
     else:
         next_color()
-canvas.bind("<Button-1>", next_color)     # left click cycles color
-canvas.bind("<Button-3>", on_click)   # right click closes window
+canvas.bind("<Button-1>", next_color)
+canvas.bind("<Button-3>", on_click)
 draw_frame()
 update_frame()
 move_window()
